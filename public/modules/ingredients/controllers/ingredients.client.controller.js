@@ -5,6 +5,7 @@ angular.module('ingredients').controller('IngredientsController', ['$scope', '$s
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
+			console.log('create' + this.name);
 			var ingredient = new Ingredients({
 				name: this.name
 			});

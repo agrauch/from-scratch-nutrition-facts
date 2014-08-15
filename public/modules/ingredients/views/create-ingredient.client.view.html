@@ -2,22 +2,94 @@
 	<div class="page-header">
 		<h1>New Ingredient</h1>
 	</div>
-	<div class="col-md-12">
-		<form class="form-horizontal" data-ng-submit="create()" novalidate>
-			<fieldset>
-				<div class="form-group">
-					<label class="control-label" for="name">Name</label>
-					<div class="controls">
-						<input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
-					</div>
+	<div class="col-sm-10">
+		<form class="form-horizontal" data-ng-submit="create()">
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="name">Name</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
 				</div>
-				<div class="form-group">
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="servingSize">Serving Size</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="servingSize" id="servingSize" class="form-control" placeholder="Serving Size" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="calories">Calories</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="calories" id="calories" class="form-control" placeholder="Calories" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="caloriesFromFat">Calories From Fat</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="caloriesFromFat" id="caloriesFromFat" class="form-control" placeholder="Calories From Fat" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="totalFat">Total Fat</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="totalFat" id="totalFat" class="form-control" placeholder="Total Fat" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="saturatedFat">Saturated Fat</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="saturatedFat" id="saturatedFat" class="form-control" placeholder="Saturated Fat" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="transFat">Trans Fat</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="transFat" id="transFat" class="form-control" placeholder="Trans Fat" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="colesterol">Colesterol</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="colesterol" id="colesterol" class="form-control" placeholder="Colesterol" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="sodium">Sodium</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="sodium" id="sodium" class="form-control" placeholder="Sodium" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="totalCarbohydrates">Total Carbohydrates</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="totalCarbohydrates" id="totalCarbohydrates" class="form-control" placeholder="Total Carbohydrates" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="dietaryFibers">Dietary Fibers</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="dietaryFibers" id="dietaryFibers" class="form-control" placeholder="Dietary Fibers" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="sugars">Sugars</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="sugars" id="sugars" class="form-control" placeholder="Sugars" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="protein">Protein</label>
+				<div class="col-sm-7">
+					<input type="text" data-ng-model="protein" id="protein" class="form-control" placeholder="Protein" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-7">
 					<input type="submit" class="btn btn-default">
 				</div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-			</fieldset>
+			</div>
+			<div data-ng-show="error" class="text-danger">
+				<strong data-ng-bind="error"></strong>
+			</div>
 		</form>
 	</div>
 </section>
