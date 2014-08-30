@@ -44,7 +44,7 @@ var IngredientSchema = new Schema({
 	sodium: {
 		type: Number
 	},
-	totalCarbohydrate: {
+	totalCarbohydrates: {
 		type: Number
 	},
 	dietaryFibers: {

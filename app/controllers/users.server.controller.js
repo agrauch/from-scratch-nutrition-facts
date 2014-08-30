@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
 	passport = require('passport'),
 	User = mongoose.model('User'),
 	_ = require('lodash'),
-	utils = require('../../app/utils/utils');
+	errors = require('../../app/utils/errors');
 
 /**
  * Signup
@@ -28,7 +28,7 @@ exports.signup = function(req, res) {
 	user.save(function(err) {
 		if (err) {
 			return res.send(400, {
-				message: utils.getErrorMessage(err)
+				message: errors.getErrorMessage(err)
 			});
 		} else {
 			// Remove sensitive data before login
@@ -89,7 +89,7 @@ exports.update = function(req, res) {
 		user.save(function(err) {
 			if (err) {
 				return res.send(400, {
-					message: utils.getErrorMessage(err)
+					message: errors.getErrorMessage(err)
 				});
 			} else {
 				req.login(user, function(err) {
@@ -126,7 +126,7 @@ exports.changePassword = function(req, res, next) {
 						user.save(function(err) {
 							if (err) {
 								return res.send(400, {
-									message: utils.getErrorMessage(err)
+									message: errors.getErrorMessage(err)
 								});
 							} else {
 								req.login(user, function(err) {
@@ -337,7 +337,7 @@ exports.removeOAuthProvider = function(req, res, next) {
 		user.save(function(err) {
 			if (err) {
 				return res.send(400, {
-					message: utils.getErrorMessage(err)
+					message: errors.getErrorMessage(err)
 				});
 			} else {
 				req.login(user, function(err) {

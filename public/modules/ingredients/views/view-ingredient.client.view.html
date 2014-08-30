@@ -2,12 +2,62 @@
 	<div class="page-header">
 		<h1 data-ng-bind="ingredient.name"></h1>
 	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == ingredient.user._id">
-		<a class="btn btn-primary" href="/#!/ingredients/{{ingredient._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
+	<div class="col-sm-10">
+		<div class="row">	
+			<label class="col-sm-3 control-label" for="servingSize">Serving Size</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.servingSize" id="servingSize"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="calories">Calories</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.calories" id="calories"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="caloriesFromFat">Calories From Fat</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.caloriesFromFat" id="caloriesFromFat"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="totalFat">Total Fat</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.totalFat" id="totalFat"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="saturatedFat">Saturated Fat</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.saturatedFat" id="saturatedFat"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="transFat">Trans Fat</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.transFat" id="transFat"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="colesterol">Colesterol</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.colesterol" id="colesterol"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="sodium">Sodium</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.sodium" id="sodium"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="totalCarbohydrates">Total Carbohydrates</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.totalCarbohydrates" id="totalCarbohydrates"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="dietaryFibers">Dietary Fibers</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.dietaryFibers" id="dietaryFibers"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="sugars">Sugars</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.sugars" id="sugars"></div>
+		</div>
+		<div class="row">
+			<label class="col-sm-3 control-label" for="protein">Protein</label>
+			<div class="col-sm-7" data-ng-bind="ingredient.protein" id="protein"></div>
+		</div>
+		<div class="pull-right" data-ng-show="authentication.user._id == ingredient.user._id">
+			<a class="btn btn-primary" href="/#!/ingredients/{{ingredient._id}}/edit">
+				<i class="glyphicon glyphicon-edit"></i>
+			</a>
+			<a class="btn btn-primary" data-ng-click="remove();">
+				<i class="glyphicon glyphicon-trash"></i>
+			</a>
+		</div>
 	</div>
 </section>

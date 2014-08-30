@@ -5,17 +5,15 @@ angular.module('ingredients').controller('IngredientsController', ['$scope', '$s
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
-			console.log('create' + this.name);
-			var ingredient = new Ingredients({
-				name: this.name
-			});
+			console.log('create' + this.ingredient.name);
+			var ingredient = new Ingredients(this.ingredient);
 			ingredient.$save(function(response) {
 				$location.path('ingredients/' + response._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 
-			this.name = '';
+			this.ingredient = {};
 		};
 
 		$scope.remove = function(ingredient) {
