@@ -17,44 +17,56 @@ var IngredientSchema = new Schema({
 		required: true
 	},
 	servingSize: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	unitOfMeasure: {
 		type: Schema.ObjectId,
-		ref: 'UnitOfMeasure',
+		ref: 'UnitOfMeasure'
 	},
 	calories: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	caloriesFromFat: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	totalFat: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	saturatedFat: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	transFat: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	colesterol: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	sodium: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	totalCarbohydrates: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	dietaryFibers: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	sugars: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	protein: {
-		type: Number
+		type: Number,
+		required: true
 	}
 });
 
