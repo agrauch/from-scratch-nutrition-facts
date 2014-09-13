@@ -1,19 +1,20 @@
 'use strict';
 
-angular.module('recipes').controller('RecipesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Recipes',
-	function($scope, $stateParams, $location, Authentication, Recipes) {
+angular.module('recipes').controller('RecipesController', ['$scope', '$stateParams', '$location', 
+	'Authentication', 'Recipes', 'Ingredients',
+	function($scope, $stateParams, $location, Authentication, Recipes, Ingredients) {
 		$scope.authentication = Authentication;
+		$scope.ingredients = Ingredients.query();
 
 		$scope.create = function() {
-			console.log('create' + this.recipe.name);
-			var recipe = new Recipes(this.recipe);
+			var recipe = new Recipes($scope.recipe);
 			recipe.$save(function(response) {
 				$location.path('recipes/' + response._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 
-			this.recipe = {};
+			$scope.newIngredient();
 		};
 
 		$scope.remove = function(recipe) {
@@ -51,5 +52,19 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 				recipeId: $stateParams.recipeId
 			});
 		};
+
+		$scope.newRecipe = function() {
+			$scope.recipe = {
+				ingredients: []
+			};
+		}
+
+		$scope.addIngredient = function() {
+			$scope.recipe.ingredients.push({});
+		}
+
+		$scope.removeIngredient = function(idx) {
+			$scope.recipe.ingredients.splice(idx, 1);
+		}
 	}
 ]);

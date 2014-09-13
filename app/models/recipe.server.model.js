@@ -16,6 +16,7 @@ var RecipeSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'RecipeIngredient'	
 	}],
+	instructions: String,
 	calories: Number,
 	caloriesFromFat: Number,
 	totalFat: Number,

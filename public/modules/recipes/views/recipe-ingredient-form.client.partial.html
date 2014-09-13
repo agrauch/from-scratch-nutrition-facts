@@ -1,6 +1,13 @@
-<div class="form-group">
+<div class="form-group row">
 	<label class="col-sm-1 control-label" for="ingredient">Ingredient</label>
 	<div class="col-sm-2">
-		<select data-ng-model="ingredient.name"  ng-options="i.name for i in ingredients"id="ingredient" class="form-control" required>
+		<select data-ng-model="recipeIngredient.ingredient.name"  data-ng-options="i.name for i in ingredients" id="ingredient" class="form-control" required></select>
+	</div>
+	<label class="col-sm-1 control-label" for="quantity">Quantity</label>
+	<div class="col-sm-2">
+		<input type="text" data-ng-model="recipeIngredient.quantity" id="quantity" class="form-control" placeholder="Quantity" required>
+	</div>
+	<div class="col-sm-1">
+		<button type="button" class="btn btn-xs btn-danger" data-ng-click="removeIngredient($index)">Remove</button>
 	</div>
 </div>

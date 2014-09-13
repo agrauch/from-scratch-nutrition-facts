@@ -1,6 +1,5 @@
 'use strict';
 
-//Recipes service used for communicating with the recipes REST endpoints
 angular.module('recipes').factory('Recipes', ['$resource',
 	function($resource) {
 		return $resource('recipes/:recipeId', {
@@ -10,5 +9,11 @@ angular.module('recipes').factory('Recipes', ['$resource',
 				method: 'PUT'
 			}
 		});
+	}
+]);
+
+angular.module('recipes').factory('Ingredients', ['$resource',
+	function($resource) {
+		return $resource('ingredients');
 	}
 ]);
