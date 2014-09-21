@@ -13,9 +13,21 @@ var RecipeSchema = new Schema({
 		ref: 'User'
 	},
 	ingredients: [{
-		type: Schema.ObjectId,
-		ref: 'RecipeIngredient'	
+		ingredient: {
+			type: Schema.ObjectId,
+			ref: 'Ingredient',
+			required: true		
+		},
+		quantity: {
+			type: Number,
+			required: true
+		},
+		unitOfMeasure: {
+			type: Schema.ObjectId,
+			ref: 'UnitOfMeasure'
+		}
 	}],
+	name: String,
 	instructions: String,
 	calories: Number,
 	caloriesFromFat: Number,

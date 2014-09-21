@@ -17,9 +17,8 @@ function addModelCallback(model, res) {
 exports.build = function (Model, modelName) {
 	return {
 		create:function(req, res) {
-			var model = new Model(req.body);
+			var model = new Model(req.body);			
 			model.user = req.user;
-
 			model.save(addModelCallback(model, res));
 		},
 
@@ -29,15 +28,12 @@ exports.build = function (Model, modelName) {
 
 		update: function(req, res) {
 			var model = req.model;
-
 			model = _.extend(model, req.body);
-
 			model.save(addModelCallback(model, res));
 		},
 
 		delete: function(req, res) {
 			var model = req.model;
-
 			model.remove(addModelCallback(model, res));
 		},
 

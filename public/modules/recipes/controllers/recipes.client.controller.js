@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('recipes').controller('RecipesController', ['$scope', '$stateParams', '$location', 
-	'Authentication', 'Recipes', 'Ingredients',
-	function($scope, $stateParams, $location, Authentication, Recipes, Ingredients) {
+	'Authentication', 'Recipes', 'Ingredients', '_',
+	function($scope, $stateParams, $location, Authentication, Recipes, Ingredients, _) {
 		$scope.authentication = Authentication;
 		$scope.ingredients = Ingredients.query();
 
@@ -14,7 +14,7 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 				$scope.error = errorResponse.data.message;
 			});
 
-			$scope.newIngredient();
+			$scope.newRecipe();
 		};
 
 		$scope.remove = function(recipe) {
@@ -57,14 +57,30 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 			$scope.recipe = {
 				ingredients: []
 			};
-		}
+		};
 
 		$scope.addIngredient = function() {
 			$scope.recipe.ingredients.push({});
-		}
+			$scope.updateNutritionFacts();
+		};
 
 		$scope.removeIngredient = function(idx) {
 			$scope.recipe.ingredients.splice(idx, 1);
-		}
+			$scope.updateNutritionFacts();
+		};
+
+		$scope.updateNutritionFacts = function() {
+			var facts = ['calories', 'caloriesFromFat', 'totalFat', 'saturatedFat', 'transFat', 'colesterol', 'sodium', 'totalCarbohydrates', 'dietaryFibers', 'sugars', 'protein'];
+
+			_.each(facts, function (fact) {
+				$scope.recipe[fact] = _.reduce($scope.recipe.ingredients, function(sum, ri) {
+					var ingredient = _.find($scope.ingredients, function(ing){
+						return ri.ingredient ? ri.ingredient === ing._id : false;
+					});
+					var num = ingredient ? ingredient[fact] * (ri.quantity || 0) : 0;
+				  	return sum + num;
+				}, 0);
+			});
+		};
 	}
 ]);

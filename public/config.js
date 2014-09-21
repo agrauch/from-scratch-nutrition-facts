@@ -6,10 +6,16 @@ var ApplicationConfiguration = (function() {
 	var applicationModuleName = 'from-scratch-nutrition-facts';
 	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils'];
 
+	angular.module('lodash', []).factory('_', function() {
+	    return window._; 
+	});
+
 	// Add a new vertical module
-	var registerModule = function(moduleName) {
+	var registerModule = function(moduleName, dependencies) {
+		dependencies = dependencies || [];
+
 		// Create angular module
-		angular.module(moduleName, []);
+		angular.module(moduleName, ['lodash'].concat(dependencies));
 
 		// Add the module to the AngularJS configuration file
 		angular.module(applicationModuleName).requires.push(moduleName);

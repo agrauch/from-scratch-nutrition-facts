@@ -11,9 +11,3 @@ angular.module('recipes').factory('Recipes', ['$resource',
 		});
 	}
 ]);
-
-angular.module('recipes').factory('Ingredients', ['$resource',
-	function($resource) {
-		return $resource('ingredients');
-	}
-]);
