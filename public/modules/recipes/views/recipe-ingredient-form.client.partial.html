@@ -7,6 +7,9 @@
 	<div class="col-sm-2">
 		<input type="text" data-ng-model="recipeIngredient.quantity" id="quantity" class="form-control" placeholder="Quantity" data-ng-change="updateNutritionFacts()" required>
 	</div>
+	<div class="col-sm-2">
+		<select data-ng-model="recipeIngredient.unitOfMeasure._id" data-ng-options="uom._id as uom.name for uom in unitsOfMeasure" id="unitOfMeasure" class="form-control" data-ng-change="updateNutritionFacts()" required></select>
+	</div>
 	<div class="col-sm-1">
 		<button type="button" class="btn btn-xs btn-danger" data-ng-click="removeIngredient($index)">Remove</button>
 	</div>

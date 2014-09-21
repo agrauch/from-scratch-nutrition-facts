@@ -20,10 +20,6 @@ var IngredientSchema = new Schema({
 		type: Number,
 		required: true
 	},
-	unitOfMeasure: {
-		type: Schema.ObjectId,
-		ref: 'UnitOfMeasure'
-	},
 	calories: {
 		type: Number,
 		required: true
@@ -67,7 +63,8 @@ var IngredientSchema = new Schema({
 	protein: {
 		type: Number,
 		required: true
-	}
+	},
+	gramsPerCup: Number
 });
 
 mongoose.model('Ingredient', IngredientSchema);

@@ -8,7 +8,11 @@ var UnitOfMeasureSchema = new Schema({
 		type: String,
 		required: true
 	},
-	toGramConversionFactor: {
+	toGrams: {
+		type: Number,
+		required: true
+	},
+	perCup: {
 		type: Number,
 		required: true
 	}

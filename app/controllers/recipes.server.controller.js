@@ -5,4 +5,4 @@ var mongoose = require('mongoose'),
 	_ = require('lodash'),
 	controllerFactory = require('../../app/utils/controllerFactory');
 
-_.merge(exports, controllerFactory.build(Recipe, 'recipe', ['ingredients.ingredient']));
+_.merge(exports, controllerFactory.build(Recipe, 'recipe', ['ingredients.ingredient', 'ingredients.unitOfMeasure']));

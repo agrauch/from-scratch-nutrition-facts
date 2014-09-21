@@ -136,5 +136,9 @@ module.exports = function(db) {
 		});
 	});
 
+	// initialize data
+	var init = require(path.resolve('./app/utils/dataInitializer'));
+	init.unitsOfMeasure();
+
 	return app;
 };

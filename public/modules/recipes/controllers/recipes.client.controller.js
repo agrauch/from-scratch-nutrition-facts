@@ -1,21 +1,29 @@
 'use strict';
 
 angular.module('recipes').controller('RecipesController', ['$scope', '$stateParams', '$location', 
-	'Authentication', 'Recipes', 'Ingredients', '_',
-	function($scope, $stateParams, $location, Authentication, Recipes, Ingredients, _) {
+	'Authentication', 'Recipes', 'Ingredients', 'UnitsOfMeasure', '_',
+	function($scope, $stateParams, $location, Authentication, Recipes, Ingredients, UnitsOfMeasure, _) {
+		var facts = ['calories', 'caloriesFromFat', 'totalFat', 'saturatedFat', 'transFat', 'colesterol', 'sodium', 'totalCarbohydrates', 'dietaryFibers', 'sugars', 'protein'];
+
 		$scope.authentication = Authentication;
 		$scope.ingredients = Ingredients.query();
+		$scope.unitsOfMeasure = UnitsOfMeasure.query();
 
-		function buildIngredientRefs(recipe) {
+		function buildRefs(recipe) {
 			_.each(recipe.ingredients, function (recipeIngredient) {
-				recipeIngredient = recipeIngredient._id;
+				recipeIngredient.ingredient = recipeIngredient.ingredient._id;
+				recipeIngredient.unitOfMeasure = recipeIngredient.unitOfMeasure._id;
 			});
 
 			return recipe;
 		}
 
+		function roundToTwo(num) {    
+		    return +(Math.round(num + "e+2")  + "e-2");
+		}
+
 		$scope.create = function() {
-			var recipe = buildIngredientRefs(new Recipes($scope.recipe));
+			var recipe = buildRefs(new Recipes($scope.recipe));
 			recipe.$save(function(response) {
 				$location.path('recipes/' + response._id);
 			}, function(errorResponse) {
@@ -42,7 +50,7 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 		};
 
 		$scope.update = function() {
-			var recipe = buildIngredientRefs($scope.recipe);
+			var recipe = buildRefs($scope.recipe);
 
 			recipe.$update(function() {
 				$location.path('recipes/' + recipe._id);
@@ -78,17 +86,27 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 		};
 
 		$scope.updateNutritionFacts = function() {
-			var facts = ['calories', 'caloriesFromFat', 'totalFat', 'saturatedFat', 'transFat', 'colesterol', 'sodium', 'totalCarbohydrates', 'dietaryFibers', 'sugars', 'protein'];
-
 			_.each(facts, function (fact) {
-				$scope.recipe[fact] = _.reduce($scope.recipe.ingredients, function(sum, ri) {
+				$scope.recipe[fact] = roundToTwo(_.reduce($scope.recipe.ingredients, function(sum, ri) {
 					var ingredient = _.find($scope.ingredients, function(ing){
 						return ri.ingredient ? ri.ingredient._id === ing._id : false;
 					});
-					var num = ingredient ? ingredient[fact] * (ri.quantity || 0) : 0;
-				  	return sum + num;
-				}, 0);
+					var unitOfMeasure = _.find($scope.unitsOfMeasure, function(uom){
+						return ri.unitOfMeasure ? ri.unitOfMeasure._id === uom._id : false;
+					});
+					var num = ingredient 
+						? ingredient[fact] 
+							* (ri.quantity || 0) 
+							* (unitOfMeasure ? unitOfMeasure.toGrams : 0)
+						: 0;
+				  	return sum + (!_.isNaN(num) ? num : 0);
+				}, 0));
 			});
+		};
+
+		$scope.perServing = function(fact) {
+			var num = fact / $scope.recipe.numberOfServings;
+			return !_.isNaN(num) ? roundToTwo(num) : '';
 		};
 	}
 ]);

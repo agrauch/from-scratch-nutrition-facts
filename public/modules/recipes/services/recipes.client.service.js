@@ -11,3 +11,9 @@ angular.module('recipes').factory('Recipes', ['$resource',
 		});
 	}
 ]);
+
+angular.module('recipes').factory('UnitsOfMeasure', ['$resource',
+	function($resource) {
+		return $resource('unitsOfMeasure');
+	}
+]);
