@@ -14,7 +14,11 @@ function addModelCallback(model, res) {
 		}
 	};
 }
-exports.build = function (Model, modelName) {
+exports.build = function (Model, modelName, additionalFields) {
+	additionalFields = additionalFields || [];
+	additionalFields.push('user');
+	var populateFields = additionalFields.join(' ');
+
 	return {
 		create:function(req, res) {
 			var model = new Model(req.body);			
@@ -38,7 +42,7 @@ exports.build = function (Model, modelName) {
 		},
 
 		list: function(req, res) {
-			Model.find().sort('-created').populate('user').exec(function(err, models) {
+			Model.find().sort('-created').populate(populateFields).exec(function(err, models) {
 				if (err) {
 					return res.send(400, {
 						message: errors.getErrorMessage(err)
@@ -50,7 +54,7 @@ exports.build = function (Model, modelName) {
 		},
 
 		findById: function(req, res, next, id) {
-			Model.findById(id).populate('user').exec(function(err, model) {
+			Model.findById(id).populate(populateFields).exec(function(err, model) {
 				if (err) return next(err);
 				if (!model) return next(new Error('Failed to load ' + modelName + id));
 				req.model = model;

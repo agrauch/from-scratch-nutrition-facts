@@ -28,6 +28,7 @@ var RecipeSchema = new Schema({
 		}
 	}],
 	name: String,
+	numberOfServings: Number,
 	instructions: String,
 	calories: Number,
 	caloriesFromFat: Number,

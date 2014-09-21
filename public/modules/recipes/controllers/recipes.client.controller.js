@@ -6,8 +6,16 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 		$scope.authentication = Authentication;
 		$scope.ingredients = Ingredients.query();
 
+		function buildIngredientRefs(recipe) {
+			_.each(recipe.ingredients, function (recipeIngredient) {
+				recipeIngredient = recipeIngredient._id;
+			});
+
+			return recipe;
+		}
+
 		$scope.create = function() {
-			var recipe = new Recipes($scope.recipe);
+			var recipe = buildIngredientRefs(new Recipes($scope.recipe));
 			recipe.$save(function(response) {
 				$location.path('recipes/' + response._id);
 			}, function(errorResponse) {
@@ -34,7 +42,7 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 		};
 
 		$scope.update = function() {
-			var recipe = $scope.recipe;
+			var recipe = buildIngredientRefs($scope.recipe);
 
 			recipe.$update(function() {
 				$location.path('recipes/' + recipe._id);
@@ -75,7 +83,7 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 			_.each(facts, function (fact) {
 				$scope.recipe[fact] = _.reduce($scope.recipe.ingredients, function(sum, ri) {
 					var ingredient = _.find($scope.ingredients, function(ing){
-						return ri.ingredient ? ri.ingredient === ing._id : false;
+						return ri.ingredient ? ri.ingredient._id === ing._id : false;
 					});
 					var num = ingredient ? ingredient[fact] * (ri.quantity || 0) : 0;
 				  	return sum + num;
