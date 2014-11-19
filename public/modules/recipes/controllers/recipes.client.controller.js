@@ -19,7 +19,7 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 		}
 
 		function roundToTwo(num) {    
-		    return +(Math.round(num + "e+2")  + "e-2");
+		    return +(Math.round(num + 'e+2')  + 'e-2');
 		}
 
 		$scope.create = function() {
@@ -94,11 +94,11 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 					var unitOfMeasure = _.find($scope.unitsOfMeasure, function(uom){
 						return ri.unitOfMeasure ? ri.unitOfMeasure._id === uom._id : false;
 					});
-					var num = ingredient 
-						? ingredient[fact] 
-							* (ri.quantity || 0) 
-							* (unitOfMeasure ? unitOfMeasure.toGrams : 0)
-						: 0;
+					var num = ingredient ?
+						ingredient[fact] *
+							(ri.quantity || 0) *
+							(unitOfMeasure ? unitOfMeasure.toGrams : 0) :
+						0;
 				  	return sum + (!_.isNaN(num) ? num : 0);
 				}, 0));
 			});
