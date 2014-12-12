@@ -1,11 +1,11 @@
-<div class="form-group row">
-	<label class="col-sm-1 control-label" for="ingredient">Ingredient</label>
+<div class="form-group">
+	<div class="col-sm-2"></div>
 	<div class="col-sm-2">
 		<select data-ng-model="recipeIngredient.ingredient._id" data-ng-options="i._id as i.name for i in ingredients" id="ingredient" class="form-control" data-ng-change="updateNutritionFacts()" required></select>
 	</div>
 	<label class="col-sm-1 control-label" for="quantity">Quantity</label>
 	<div class="col-sm-2">
-		<input type="text" data-ng-model="recipeIngredient.quantity" id="quantity" class="form-control" placeholder="Quantity" data-ng-change="updateNutritionFacts()" required>
+		<input type="text" data-ng-model="recipeIngredient.quantity" id="quantity" class="form-control" data-ng-change="updateNutritionFacts()" required>
 	</div>
 	<div class="col-sm-2">
 		<select data-ng-model="recipeIngredient.unitOfMeasure._id" data-ng-options="uom._id as uom.name for uom in unitsOfMeasure" id="unitOfMeasure" class="form-control" data-ng-change="updateNutritionFacts()" required></select>

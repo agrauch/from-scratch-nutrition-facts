@@ -1,13 +1,13 @@
 <div class="col-sm-10">
-	<div class="form-group row">
+	<div class="form-group">
 		<label class="col-sm-2 control-label" for="name">Name</label>
 		<div class="col-sm-8">
 			<input data-ng-model="recipe.name" id="name" class="form-control" placeholder="Name" required></input>
 		</div>
+	</div>
 	<div class="form-group">
-		<div class="col-sm-9">
-			<h4>Ingredients</h4>
-		</div>
+		<label class="col-sm-2 control-label"><strong>Ingredients</strong></label>
+		<div class="col-sm-7"></div>
 		<div class="col-sm-1">
 			<button type="button" class="btn btn-default" data-ng-click="addIngredient()">Add</button>
 		</div>
@@ -28,66 +28,88 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-3">
-			<h4>Nutrition Facts</h4>
+		<div class="col-sm-3 text-right">
+			<strong>Nutrition Facts</strong>
 		</div>
-		<div class="col-sm-3">Total</div>
-		<div class="col-sm-3">Per Serving</div>
+		<div class="col-sm-3 text-center">Total</div>
+		<div class="col-sm-4 text-center">Per Serving</div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="calories">Calories</label>
-		<div class="col-sm-3" data-ng-bind="recipe.calories" id="calories"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.calories)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Calories</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.calories" id="calories"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.calories)"></div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="caloriesFromFat">Calories From Fat</label>
-		<div class="col-sm-3" data-ng-bind="recipe.caloriesFromFat" id="caloriesFromFat"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.caloriesFromFat)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Calories From Fat</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.caloriesFromFat" id="caloriesFromFat"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.caloriesFromFat)"></div>
 	</div>		
 	<div class="row">
-		<label class="col-sm-3 control-label" for="totalFat">Total Fat</label>
-		<div class="col-sm-3" data-ng-bind="recipe.totalFat" id="totalFat"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.totalFat)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Total Fat</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.totalFat" id="totalFat"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.totalFat)"></div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="saturatedFat">Saturated Fat</label>
-		<div class="col-sm-3" data-ng-bind="recipe.saturatedFat" id="saturatedFat"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.saturatedFat)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Saturated Fat</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.saturatedFat" id="saturatedFat"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.saturatedFat)"></div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="transFat">Trans Fat</label>
-		<div class="col-sm-3" data-ng-bind="recipe.transFat" id="transFat"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.transFat)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Trans Fat</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.transFat" id="transFat"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.transFat)"></div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="colesterol">Colesterol</label>
-		<div class="col-sm-3" data-ng-bind="recipe.colesterol" id="colesterol"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.colesterol)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Colesterol</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.colesterol" id="colesterol"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.colesterol)"></div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="sodium">Sodium</label>
-		<div class="col-sm-3" data-ng-bind="recipe.sodium" id="sodium"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.sodium)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Sodium</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.sodium" id="sodium"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.sodium)"></div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="totalCarbohydrates">Total Carbohydrates</label>
-		<div class="col-sm-3" data-ng-bind="recipe.totalCarbohydrates" id="totalCarbohydrates"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.totalCarbohydrates)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Total Carbohydrates</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.totalCarbohydrates" id="totalCarbohydrates"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.totalCarbohydrates)"></div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="dietaryFibers">Dietary Fibers</label>
-		<div class="col-sm-3" data-ng-bind="recipe.dietaryFibers" id="dietaryFibers"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.dietaryFibers)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>>Dietary Fibers</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.dietaryFibers" id="dietaryFibers"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.dietaryFibers)"></div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="sugars">Sugars</label>
-		<div class="col-sm-3" data-ng-bind="recipe.sugars" id="sugars"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.sugars)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Sugars</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.sugars" id="sugars"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.sugars)"></div>
 	</div>
 	<div class="row">
-		<label class="col-sm-3 control-label" for="protein">Protein</label>
-		<div class="col-sm-3" data-ng-bind="recipe.protein" id="protein"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.protein)"></div>
+		<div class="col-sm-3 text-right">
+			<strong>Protein</strong>
+		</div>
+		<div class="col-sm-3 text-center" data-ng-bind="recipe.protein" id="protein"></div>
+		<div class="col-sm-4 text-center" data-ng-bind="perServing(recipe.protein)"></div>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-7">
