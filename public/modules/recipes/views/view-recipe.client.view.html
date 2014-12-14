@@ -1,19 +1,18 @@
 <section data-ng-controller="RecipesController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="recipe.name"></h1>
+		<h2 data-ng-bind="recipe.name"></h2>
 	</div>
 	<div class="row">
-		<h4>Ingredients</h4>
-		<div class="row" data-ng-repeat="recipeIngredient in recipe.ingredients">
-			<label class="col-sm-1" for="ingredient">Ingredient</label>
-			<div class="col-sm-2" data-ng-bind="recipeIngredient.ingredient.name" id="ingredient"></div>
-			<label class="col-sm-1" for="quantity">Quantity</label>
-			<div class="col-sm-2">
-				<span data-ng-bind="recipeIngredient.quantity" id="quantity"></span>
-				<span data-ng-bind="recipeIngredient.unitOfMeasure.name"></span>
-			</div>
-		</div>	
+		<label class="col-sm-3" for="instructions">Ingredients</label>
 	</div>
+	<div class="row" data-ng-repeat="recipeIngredient in recipe.ingredients">
+		<div class="col-sm-3" data-ng-bind="recipeIngredient.ingredient.name" id="ingredient"></div>
+		<label class="col-sm-1" for="quantity">Quantity</label>
+		<div class="col-sm-2">
+			<span data-ng-bind="recipeIngredient.quantity" id="quantity"></span>
+			<span data-ng-bind="recipeIngredient.unitOfMeasure.name"></span>
+		</div>
+	</div>	
 	<div class="row">
 		<label class="col-sm-3" for="instructions">Instructions</label>
 		<div class="col-sm-7" data-ng-bind="recipe.instructions" id="instructions"></div>
@@ -22,68 +21,7 @@
 		<label class="col-sm-3" for="numberOfServings">Number of Servings</label>
 		<div class="col-sm-7" data-ng-bind="recipe.numberOfServings" id="numberOfServings"></div>
 	</div>
-	<div class="row">
-		<div class="col-sm-3">
-			<h4>Nutrition Facts</h4>
-		</div>
-		<div class="col-sm-3">Total</div>
-		<div class="col-sm-3">Per Serving</div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="calories">Calories</label>
-		<div class="col-sm-3" data-ng-bind="recipe.calories" id="calories"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.calories)"></div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="caloriesFromFat">Calories From Fat</label>
-		<div class="col-sm-3" data-ng-bind="recipe.caloriesFromFat" id="caloriesFromFat"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.caloriesFromFat)"></div>
-	</div>		
-	<div class="row">
-		<label class="col-sm-3" for="totalFat">Total Fat</label>
-		<div class="col-sm-3" data-ng-bind="recipe.totalFat" id="totalFat"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.totalFat)"></div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="saturatedFat">Saturated Fat</label>
-		<div class="col-sm-3" data-ng-bind="recipe.saturatedFat" id="saturatedFat"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.saturatedFat)"></div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="transFat">Trans Fat</label>
-		<div class="col-sm-3" data-ng-bind="recipe.transFat" id="transFat"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.transFat)"></div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="colesterol">Colesterol</label>
-		<div class="col-sm-3" data-ng-bind="recipe.colesterol" id="colesterol"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.colesterol)"></div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="sodium">Sodium</label>
-		<div class="col-sm-3" data-ng-bind="recipe.sodium" id="sodium"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.sodium)"></div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="totalCarbohydrates">Total Carbohydrates</label>
-		<div class="col-sm-3" data-ng-bind="recipe.totalCarbohydrates" id="totalCarbohydrates"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.totalCarbohydrates)"></div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="dietaryFibers">Dietary Fibers</label>
-		<div class="col-sm-3" data-ng-bind="recipe.dietaryFibers" id="dietaryFibers"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.dietaryFibers)"></div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="sugars">Sugars</label>
-		<div class="col-sm-3" data-ng-bind="recipe.sugars" id="sugars"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.sugars)"></div>
-	</div>
-	<div class="row">
-		<label class="col-sm-3" for="protein">Protein</label>
-		<div class="col-sm-3" data-ng-bind="recipe.protein" id="protein"></div>
-		<div class="col-sm-3" data-ng-bind="perServing(recipe.protein)"></div>
-	</div>
+	<div data-ng-include="'/modules/recipes/views/nutrition-facts.client.partial.html'"></div>
 	<div class="pull-right" data-ng-show="authentication.user._id == recipe.user._id">
 		<a class="btn btn-primary" href="/#!/recipes/{{recipe._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>

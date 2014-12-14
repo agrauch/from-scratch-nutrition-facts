@@ -1,0 +1,88 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>Nutrition Facts</th>
+			<th>Total</th>
+			<th>Per Serving</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<strong>Calories</strong>
+			</td>
+			<td data-ng-bind="recipe.calories" id="calories"></td>
+			<td data-ng-bind="perServing(recipe.calories)"></td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Calories From Fat</strong>
+			</td>
+			<td data-ng-bind="recipe.caloriesFromFat" id="caloriesFromFat"></td>
+			<td data-ng-bind="perServing(recipe.caloriesFromFat)"></td>
+		</td>		
+		<tr>
+			<td>
+				<strong>Total Fat</strong>
+			</td>
+			<td data-ng-bind="recipe.totalFat" id="totalFat"></td>
+			<td data-ng-bind="perServing(recipe.totalFat)"></td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Saturated Fat</strong>
+			</td>
+			<td data-ng-bind="recipe.saturatedFat" id="saturatedFat"></td>
+			<td data-ng-bind="perServing(recipe.saturatedFat)"></td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Trans Fat</strong>
+			</td>
+			<td data-ng-bind="recipe.transFat" id="transFat"></td>
+			<td data-ng-bind="perServing(recipe.transFat)"></td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Colesterol</strong>
+			</td>
+			<td data-ng-bind="recipe.colesterol" id="colesterol"></td>
+			<td data-ng-bind="perServing(recipe.colesterol)"></td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Sodium</strong>
+			</td>
+			<td data-ng-bind="recipe.sodium" id="sodium"></td>
+			<td data-ng-bind="perServing(recipe.sodium)"></td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Total Carbohydrates</strong>
+			</td>
+			<td data-ng-bind="recipe.totalCarbohydrates" id="totalCarbohydrates"></td>
+			<td data-ng-bind="perServing(recipe.totalCarbohydrates)"></td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Dietary Fibers</strong>
+			</td>
+			<td data-ng-bind="recipe.dietaryFibers" id="dietaryFibers"></td>
+			<td data-ng-bind="perServing(recipe.dietaryFibers)"></td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Sugars</strong>
+			</td>
+			<td data-ng-bind="recipe.sugars" id="sugars"></td>
+			<td data-ng-bind="perServing(recipe.sugars)"></td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Protein</strong>
+			</td>
+			<td data-ng-bind="recipe.protein" id="protein"></td>
+			<td data-ng-bind="perServing(recipe.protein)"></td>
+		</tr>
+	</tbody>
+</table>
